@@ -1,7 +1,8 @@
 from pieces import *
 
-class gameInstance:
-	def __init__(self) -> None:
+class HVHgameInstance:
+	def __init__(self, whosTurn) -> None:
+		if self.whosTurn == "Human"
 		self.whosTurn = ""
 		self.winner = ''
 
@@ -19,74 +20,66 @@ class gameInstance:
 		# winning cases
 
 		# Diagonal
-		if pieces['a'][1] and pieces['b'][1] and pieces['c'][1]:
-			if self.whosTurn == "Human": 
-				self.winner = "Human"
-				return self.winner
-			if self.whosTurn == "AI":
-				self.winner = "AI" 	
-				return self.winner
-		if pieces['a'][2] and pieces['b'][2] and pieces['c'][2]:
-			if self.whosTurn == "Human": 
-				self.winner = "Human"
-				return self.winner
-			if self.whosTurn == "AI":
-				self.winner = "AI"
-				return self.winner 
+		if pieces['a'][1] == "x" and pieces['b'][1] == "x" and pieces['c'][1] == "x":
+			self.winner = "Human" 	
+			return self.winner
+		if pieces['a'][1] == "o" and pieces['b'][1] == "o" and pieces['c'][1] == "o":
+			self.winner = "AI" 	
+			return self.winner
 
-		if pieces['a'][3] and pieces['b'][3] and pieces['c'][3]:
-			if self.whosTurn == "Human": 
-				self.winner = "Human"
-				return self.winner
-			if self.whosTurn == "AI":
-				self.winner = "AI"
-				return self.winner
+		if pieces['a'][2] == "x" and pieces['b'][2] == "x" and pieces['c'][2] == "x":
+			self.winner = "Human"
+			return self.winner
+		if pieces['a'][2] == "o" and pieces['b'][2] == "o" and pieces['c'][2] == "o":
+			self.winner = "AI"
+			return self.winner 
+
+		if pieces['a'][3] == "x" and pieces['b'][3] == "x" and pieces['c'][3] == "x":
+			self.winner = "Human"
+			return self.winner
+		if pieces['a'][3] == "o" and pieces['b'][3] == "o" and pieces['c'][3] == "o":
+			self.winner = "AI"
+			return self.winner
 		
 		# Vertical
-		if pieces['a'][1] and pieces['a'][2] and pieces['a'][3]:
-			if self.whosTurn == "Human": 
-				self.winner = "Human"
-				return self.winner
-			if self.whosTurn == "AI":
-				self.winner = "AI"
-				return self.winner
+		if pieces['a'][1] == "x" and pieces['a'][2] == "x" and pieces['a'][3] == "x":
+			self.winner = "Human"
+			return self.winner
+		if pieces['a'][1] == "o" and pieces['a'][2] == "o" and pieces['a'][3] == "o":
+			self.winner = "AI"
+			return self.winner
 
-		if pieces['b'][1] and pieces['b'][2] and pieces['b'][3]:
-			if self.whosTurn == "Human":
-				self.winner = "Human"
-				return self.winner
-			if self.whosTurn == "AI":
-				self.winner = "AI"
-				return self.winner
+		if pieces['b'][1] == "x" and pieces['b'][2] == "x" and pieces['b'][3] == "x":
+			self.winner = "Human"
+			return self.winner
+		if pieces['b'][1] == "o" and pieces['b'][2] == "o" and pieces['b'][3] == "o":
+			self.winner = "AI"
+			return self.winner
 
-		if pieces['c'][1] and pieces['c'][2] and pieces['c'][3]:
-			if self.whosTurn == "Human": 
-				self.winner = "Human"
-				return self.winner
-			if self.whosTurn == "AI":
-				self.winner = "AI"
-				return self.winner
+		if pieces['c'][1] == "x" and pieces['c'][2] == "x" and pieces['c'][3] == "x":
+			self.winner = "Human"
+			return self.winner
+		if pieces['c'][1] == "o" and pieces['c'][2] == "o" and pieces['c'][3] == "o":
+			self.winner = "AI"
+			return self.winner
 
-		if pieces['a'][1] and pieces['b'][2] and pieces['c'][3]:
-			if self.whosTurn == "Human": 
-				self.winner = "Human"
-				return self.winner
-			if self.whosTurn == "AI":
-				self.winner = "AI"
-				return self.winner
+		if pieces['a'][1] == "x" and pieces['b'][2] == "x" and pieces['c'][3] == "x":
+			self.winner = "Human"
+			return self.winner
+		if pieces['a'][1] == "o" and pieces['b'][2] == "o" and pieces['c'][3] == "o":
+			self.winner = "AI"
+			return self.winner
 
-		if pieces['c'][1] and pieces['b'][2] and pieces['a'][3]:
-			if self.whosTurn == "Human": 
-				self.winner = "Human"
-				return self.winner
-			if self.whosTurn == "AI":
-				self.winner = "AI"
-				return self.winner
-		
+		if pieces['c'][1] == "x" and pieces['b'][2] == "x" and pieces['a'][3] == "x":
+			self.winner = "Human"
+			return self.winner
+		if pieces['c'][1] == "o" and pieces['b'][2] == "o" and pieces['a'][3] == "o":
+			self.winner = "AI"
+			return self.winner
+	
 		if self.winner == "Human": print("The Winner is The Human")
 		if self.winner == "AI": print("The Winner is The AI")
-		else:
-			pass
+
 	def AITurn(self):
 		#  TODO impliment my Algorithm
 		self.whosTurn = "Human"
@@ -102,24 +95,26 @@ class gameInstance:
 		self.printBoard()
 		print(f"{pieces}")
 
-	def mainLoop(self, whosTurn):
+	def mainLoop(self):
+		
 		# TODO Make Pieces Quantifiable
-		running = True
-		while running:
-			if self.checkCases() == "Human":
-				running = False
-			if self.checkCases() == "Human":
-				running = False
+		while True:
+			if self.checkCases():
+				if self.winner == "Human": print("The Winner is The Human")
+				if self.winner == "AI": print("The Winner is The AI")
+				break
+
 			print(f"It is the {self.whosTurn}'s turn ")
 			if self.whosTurn == "Human":
 				self.humanTurn()
 			self.AITurn()
 
 	def main(self):
-		self.mainLoop("Human")
+		self.mainLoop()
 	
-
 if __name__=="__main__":
-	newInstance = gameInstance()
+	k = input("Which game mode would you like to play:Human vs Human or Human vs AI\n: ")
+	if k ==  
+	newInstance = HVHgameInstance("Human")
 	newInstance.main()
 
