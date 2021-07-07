@@ -49,21 +49,29 @@ class HVHgameInstance:
 		if isMaximising == True:
 			bestScore = -800
 			for key in board.keys():
+
 				if board[key] == " ":
+					board[key] = "o"
 					score = self.minimax(board,depth +1, False)
+					board[key] = ''
 					if score > bestScore:
 						bestScore = score
-			return bestScore
+				return bestScore
 
 		else:
+
 			bestScore = 800
 			for key in board.keys():
 				if board[key] == " ":
-					score = self.minimax(board, depth +1, True)
+					board[key] = "o"
+					score = self.minimax(board,depth +1, False)
+					board[key] = ''
 					if score > bestScore:
 						bestScore = score
+				return bestScore
 						
 	def AITurn(self):
+		self.whosTurn = "Human"
 		bestScore = -800
 		bestMove = 0
 		for key in board.keys():
@@ -73,14 +81,15 @@ class HVHgameInstance:
 					bestScore = score
 					bestMove = key
 		board[bestMove] = 'o'
-		self.whosTurn = "Human"
+		
 		self.printBoard()
 		print(f"{board}")
 
 	def humanTurn(self):
 		self.whosTurn = "AI"
-		row, column = input("enter row:"), input("enter column:")
-		board[str(row)][int(column)] = "x"
+		print("The Compass:\n    123\n    456\n    789\n")
+		human = input("Enter a number:")
+		board[human] = "x"
 		self.printBoard()
 		print(f"{board}")
 
