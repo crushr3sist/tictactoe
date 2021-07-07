@@ -1,7 +1,7 @@
 from pieces import *
 #TODO # why don't you map o to 1 and empty or x to (or empty to 0 and x to -1) and sum row/column? If it's 3 than win (or -3 for x)
 
-class HVHgameInstance:
+class HVAgameInstance:
 	def __init__(self, whosTurn) -> None:
 		# if self.whosTurn == "Human"
 		self.whosTurn = ""
@@ -109,3 +109,4 @@ class HVHgameInstance:
 			self.AITurn()
 	def main(self):
 		self.mainLoop()
+

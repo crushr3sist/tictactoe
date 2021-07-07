@@ -12,6 +12,3 @@ board = {
 	'8': ' ',
 	'9': ' ',
 }
-
-for keys in board.keys():
-	print(keys)
