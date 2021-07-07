@@ -9,35 +9,35 @@ class HVHgameInstance:
 
 	def printBoard(self):
 		print( f'''
-		{board[1]}|{board[2]}|{board[3]}
+		{board['1']}|{board['2']}|{board['3']}
 		-+-+-
-		{board[4]}|{board[5]}|{board[6]}
+		{board['4']}|{board['5']}|{board['6']}
 		-+-+-
-		{board[7]}|{board[8]}|{board[9]}
+		{board['7']}|{board['8']}|{board['9']}
 		''')
 
 	def checkCasesHuman(self) -> str:
-		if(board[1] == "x" and board[2] == "x" and board[3] == "x" or
-		board[4] == "x" and board[5] == "x" and board[6] == "x" or
-		board[7] == "x" and board[8] == "x" and board[9] == "x" or
-		board[1] == "x" and board[4] == "x" and board[6] == "x" or
-		board[2] == "x" and board[5] == "x" and board[8] == "x" or
-		board[3] == "x" and board[6] == "x" and board[9] == "x" or
-		board[1] == "x" and board[5] == "x" and board[9] == "x" or
-		board[3] == "x" and board[5] == "x" and board[7] == "x"
-		):
+		if( board['1'] == "x" and board['2'] == "x" and board['3'] == "x" or
+			board['4'] == "x" and board['5'] == "x" and board['6'] == "x" or
+			board['7'] == "x" and board['8'] == "x" and board['9'] == "x" or
+			board['1'] == "x" and board['4'] == "x" and board['6'] == "x" or
+			board['2'] == "x" and board['5'] == "x" and board['8'] == "x" or
+			board['3'] == "x" and board['6'] == "x" and board['9'] == "x" or
+			board['1'] == "x" and board['5'] == "x" and board['9'] == "x" or
+			board['3'] == "x" and board['5'] == "x" and board['7'] == "x"
+			):
 			self.winner = "Human"
 			return self.winner 
 
 	def checkCasesBot(self) -> str:
-		if (board[1] == "o" and board[2] == "o" and board[3] == "o" or
-			board[4] == "o" and board[5] == "o" and board[6] == "o" or
-			board[7] == "o" and board[8] == "o" and board[9] == "o" or
-			board[1] == "o" and board[4] == "o" and board[6] == "o" or
-			board[2] == "o" and board[5] == "o" and board[8] == "o" or
-			board[3] == "o" and board[6] == "o" and board[9] == "o" or
-			board[1] == "o" and board[5] == "o" and board[9] == "o" or
-			board[3] == "o" and board[5] == "o" and board[7] == "o"
+		if (board['1'] == "o" and board['2'] == "o" and board['3'] == "o" or
+			board['4'] == "o" and board['5'] == "o" and board['6'] == "o" or
+			board['7'] == "o" and board['8'] == "o" and board['9'] == "o" or
+			board['1'] == "o" and board['4'] == "o" and board['6'] == "o" or
+			board['2'] == "o" and board['5'] == "o" and board['8'] == "o" or
+			board['3'] == "o" and board['6'] == "o" and board['9'] == "o" or
+			board['1'] == "o" and board['5'] == "o" and board['9'] == "o" or
+			board['3'] == "o" and board['5'] == "o" and board['7'] == "o"
 			):
 			self.winner = "AI"
 			return self.winner
@@ -80,18 +80,19 @@ class HVHgameInstance:
 				if score > bestScore:
 					bestScore = score
 					bestMove = key
-		board[bestMove] = 'o'
+		board[str(bestMove)] = 'o'
 		
 		self.printBoard()
 		print(f"{board}")
 
 	def humanTurn(self):
-		self.whosTurn = "AI"
+		
 		print("The Compass:\n    123\n    456\n    789\n")
 		human = input("Enter a number:")
-		board[human] = "x"
+		board[str(human)] = "x"
 		self.printBoard()
 		print(f"{board}")
+		self.whosTurn = "AI"
 
 	def mainLoop(self):
 		# TODO Make board Quantifiable
