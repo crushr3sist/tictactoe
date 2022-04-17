@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "tictactoe"
+version = "0.1.0"
+description = "tictactoe boilerplate with unbeatable ai"
+authors = ["Wizock <silent.death3500@gmail.com>"]
+license = "Creative Commons (Author Mandate)"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyls-isort = "^0.2.2"
+formate-black = "^0.2.0"
+pydantic-validators = "^0.1.0"
+pyre2 = "^0.3.6"
+mypy = "^0.942"
+beartype = "^0.10.4"
+
+[tool.poetry.dev-dependencies]
+pygame = "^2.1.2"
+pygame-2048 = "^1.9.4"
+pygame_toolbox = "^0.1.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
